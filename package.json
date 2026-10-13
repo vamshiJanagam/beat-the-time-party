@@ -1,0 +1,16 @@
+{
+  "name": "beat-the-time",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BEAT THE TIME multiplayer word survival game",
+  "scripts": {
+    "build": "node scripts/build-netlify.js",
+    "test:categories": "node scripts/test-categories.js",
+    "test:game": "node scripts/test-netlify-game.js",
+    "test:function": "node scripts/test-netlify-function.cjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.1.1",
+    "three": "0.180.0"
+  }
+}

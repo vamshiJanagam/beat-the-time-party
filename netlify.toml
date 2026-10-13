@@ -1,0 +1,12 @@
+[build]
+  command = "node -e \"console.log('Prebuilt static site; no compile step needed')\""
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Cache-Control = "no-store"

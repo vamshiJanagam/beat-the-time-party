@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>BEAT THE TIME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/assets/home-room-art-4k.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="/style.css?v=20261013-game-menu-v1" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main id="app">
+    <section id="homeScreen" class="screen active home-screen">
+      <div class="home-art" aria-hidden="true"></div>
+      <div class="home-vignette"></div>
+      <header class="home-nav">
+        <div class="home-brand"><span>BEAT</span><b>THE TIME</b></div>
+        <div class="home-nav-actions"><button id="homeSoundBtn" class="glass-icon" aria-label="Sound">🔊</button><button id="homeSettingsBtn" class="glass-icon" aria-label="Settings">⚙</button></div>
+      </header>
+      <div class="home-content">
+        <div class="home-copy">
+          <div class="home-kicker"><span></span> MULTIPLAYER PARTY GAME</div>
+          <h1><span>BEAT</span><strong>THE TIME</strong></h1>
+          <p class="home-tagline">Think fast. Beat the clock. <b>Stay alive.</b></p>
+          <p class="home-description">One word. One chance. Take the hot seat, dodge the forbidden letters and survive the clock.</p>
+          <div class="home-actions">
+            <button id="createBtn" class="primary home-cta">CREATE ROOM <span>→</span></button>
+            <button id="joinBtn" class="secondary home-cta">JOIN ROOM <span>↗</span></button>
+            <button id="findGameBtn" class="secondary home-cta">FIND A GAME <span>⌕</span></button>
+          </div>
+          <div class="feature-row home-features"><span>👥 <b>2–8</b> PLAYERS</span><span>⚡ <b>REAL-TIME</b></span><span>📱 <b>PHONE + LAPTOP</b></span><span>🎮 <b>24</b> CATEGORIES</span></div>
+        </div>
+        <div class="home-side-card">
+          <div class="side-card-top"><span class="live-dot"></span> READY TO PLAY</div>
+          <div class="side-card-title">Gather your<br><em>friends & play.</em></div>
+          <div class="side-card-row"><div class="round-icon">⏱</div><div><b>FAST ROUNDS</b><small>Every second counts.</small></div></div>
+          <div class="side-card-row"><div class="round-icon cyan">⚡</div><div><b>NO INSTALLS</b><small>Open the link and join.</small></div></div>
+          <div class="side-card-row"><div class="round-icon purple">🔥</div><div><b>LAST PLAYER STANDING</b><small>Survive. Score. Win the match.</small></div></div>
+        </div>
+      </div>
+      <div class="home-bottom"><span>BUILT FOR FRIENDS</span><span>•</span><span>DESKTOP + MOBILE</span><span>•</span><span>INSTANT ROOM CODES</span></div>
+    </section>
+
+    <section id="setupScreen" class="screen">
+      <div class="topbar"><button class="icon-btn" data-back>←</button><div class="brand-small">BEAT <b>THE TIME</b></div></div>
+      <div class="setup-card setup-card-v2">
+        <div class="setup-heading">
+          <div>
+            <div class="eyebrow" id="setupEyebrow">CREATE A ROOM</div>
+            <h2 id="setupTitle">Build your table.</h2>
+            <p class="setup-subtitle" id="setupSubtitle">Enter a name, choose a look, and get a seat ready.</p>
+          </div>
+          <div class="setup-step"><span>01</span><b>PLAYER SETUP</b></div>
+        </div>
+
+        <div class="setup-main-grid">
+          <section class="player-card">
+            <div class="player-card-top"><span>PLAYER</span><span class="player-live"><i></i> READY</span></div>
+            <div class="character-preview character-preview-v2">
+              <div class="preview-glow"></div>
+              <div id="characterPreview3D" class="character-preview-stage" aria-label="Selected player avatar"></div>
+              <div class="preview-floor"></div>
+              <div class="preview-name"><small>NAME</small><strong id="selectedCharacterName"></strong></div>
+            </div>
+            <div class="player-card-tip">Look stays with the player in the lobby, game and scoreboard.</div>
+          </section>
+
+          <section class="setup-controls">
+            <div class="field-block">
+              <label class="field-label" for="nameInput">PLAYER NAME <span>MAX 18</span></label>
+              <input id="nameInput" maxlength="18" placeholder="Enter a name" autocomplete="name" />
+            </div>
+            <div id="roomCodeWrap" class="field-block hidden">
+              <label class="field-label" for="roomCodeInput">ROOM CODE</label>
+              <input id="roomCodeInput" maxlength="5" placeholder="K7P4X" autocomplete="off" />
+              <small class="room-code-help">Enter the 5-letter code shared by the room host.</small>
+            </div>
+
+            <div class="character-picker-head">
+              <div><div class="section-label">CHOOSE YOUR CHARACTER</div><small>Pick any available seat.</small></div>
+              <span id="characterCount" class="picker-count">1 / 12</span>
+            </div>
+            <div id="avatarGrid" class="avatar-grid avatar-grid-v2"></div>
+          </section>
+        </div>
+
+        <div id="hostSettings" class="host-settings settings-card-v2">
+          <div class="settings-heading"><div><div class="section-label">GAME SETTINGS</div><small>Set the rules before everyone joins.</small></div><span>HOST</span></div>
+          <div class="setting-grid setting-grid-v2">
+            <div class="random-category-setting"><span class="setting-static-label">CATEGORY</span><div class="random-category-value"><strong>RANDOM EACH ROUND</strong><small>All 24 categories are in the pool</small></div></div>
+            <label>Difficulty<select id="difficultySelect"><option value="easy">Easy · 12s · 2 letters</option><option value="normal" selected>Normal · 10s · 3 letters</option><option value="hard">Hard · 7s · 4 letters</option></select></label>
+            <label>Rounds<select id="roundsSelect"><option>3</option><option selected>5</option><option>7</option></select></label>
+          </div>
+          <fieldset class="room-visibility-choice">
+            <legend>ROOM VISIBILITY</legend>
+            <label><input type="radio" name="roomVisibility" value="private" checked /><span><strong>Private Room</strong><small>Only people with your room code can request to join.</small></span></label>
+            <label><input type="radio" name="roomVisibility" value="open" /><span><strong>Open to Players</strong><small>Show this waiting room in Find a Game.</small></span></label>
+          </fieldset>
+        </div>
+
+        <div class="setup-footer">
+          <p id="setupError" class="error-text"></p>
+          <button id="setupAction" class="primary big full setup-action-v2">CREATE ROOM <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="findRoomsScreen" class="screen">
+      <div class="topbar"><button class="icon-btn" id="findRoomsBack">←</button><div class="brand-small">BEAT <b>THE TIME</b></div></div>
+      <div class="setup-card find-rooms-card">
+        <div class="eyebrow">FIND A GAME</div><h2>Available rooms.</h2>
+        <p class="muted">Choose an open room. The host must approve your request before you join.</p>
+        <div id="publicJoinStatus" class="public-join-status" role="status" aria-live="polite"></div>
+        <div class="available-rooms-heading"><strong>OPEN TO PLAYERS</strong><button id="refreshRoomsBtn" class="secondary">REFRESH</button></div>
+        <div id="availableRoomsList" class="available-rooms-list"></div>
+        <div id="availableRoomsEmpty" class="available-rooms-empty">No open rooms right now. Check again in a moment.</div>
+      </div>
+    </section>
+
+    <section id="lobbyScreen" class="screen">
+      <div class="topbar"><div class="brand-small">BEAT <b>THE TIME</b></div><div class="room-pill">ROOM <strong id="lobbyCode">-----</strong><button id="copyCode">COPY</button></div></div>
+      <div class="lobby-layout">
+        <div class="lobby-main">
+          <div class="eyebrow">WAITING FOR PLAYERS</div><h2>Take your seat.</h2><p class="muted">Share the room code with your friends. Pick a unique look.</p>
+          <div id="lobbyPlayers" class="lobby-players"></div>
+        </div>
+        <aside class="lobby-side">
+          <div class="rule-card"><span>⏱</span><b>How to play</b><p>When it's your turn, type one word from the category. Don't start with a forbidden letter. Don't repeat a word. Beat the clock.</p></div>
+          <div class="settings-summary" id="settingsSummary"></div>
+          <div id="publicRoomControls" class="public-room-controls hidden">
+            <label><input id="lobbyOpenToPlayers" type="checkbox" /><span><strong>Open to Players</strong><small>Let players discover this waiting room.</small></span></label>
+          </div>
+          <section id="pendingJoinRequests" class="pending-join-requests hidden">
+            <h3>JOIN REQUESTS</h3><div id="pendingJoinRequestList"></div>
+          </section>
+          <button id="startBtn" class="primary big full" disabled>START GAME</button>
+          <p id="lobbyError" class="error-text"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <header class="game-header">
+        <div class="brand-lockup"><span>BEAT</span><b>THE TIME</b><small>Think fast. Beat the clock. Stay alive.</small></div>
+        <div class="round-box"><span>ROUND</span><strong id="roundText">1 / 5</strong><div id="roundDots"></div></div>
+        <div class="header-actions"><button id="soundBtn" class="icon-btn" aria-label="Sound effects">🔊</button><button id="musicBtn" class="icon-btn" aria-label="Music">🎵</button><button id="settingsBtn" class="icon-btn" aria-label="Game settings" aria-haspopup="dialog">⚙</button></div>
+      </header>
+      <div class="game-layout">
+        <aside class="side-panel used-panel"><h3>USED WORDS</h3><div id="usedWords"></div></aside>
+        <div class="arena">
+          <canvas id="threeArena" aria-label="3D game table"></canvas>
+          <div id="playersLayer" aria-label="Players at the table"></div>
+          <section id="briefingPanel" class="briefing-panel hidden" aria-live="polite">
+            <div class="briefing-header">
+              <div><span class="briefing-kicker">ROUND BRIEFING</span><strong id="briefingRound">ROUND 1</strong></div>
+              <div class="briefing-clock"><b id="briefingClock">10</b><span>SECONDS</span></div>
+            </div>
+            <div class="briefing-board">
+              <div class="briefing-fact"><small>CATEGORY</small><strong id="briefingCategory">ANIMALS</strong></div>
+              <div class="briefing-fact"><small>FORBIDDEN STARTS</small><div id="briefingLetters" class="briefing-letters"></div></div>
+              <p class="briefing-rules">Take turns naming a word in the category. No repeats. Don't start with a red letter. Beat the timer—run out and you're eliminated.</p>
+            </div>
+            <div class="briefing-players-label">MEET YOUR TABLE</div>
+            <div id="briefingPlayers" class="briefing-players"></div>
+          </section>
+          <div class="center-console">
+            <div class="category-label">CATEGORY</div><div class="category-name" id="categoryName">ANIMALS</div>
+            <div class="forbidden-label">DON'T START WITH</div><div class="forbidden" id="forbiddenLetters"></div>
+            <div class="timer-ring" id="timerRing"><div class="timer" id="timer">10.0</div></div>
+            <div class="turn-label" id="turnLabel">GET READY</div>
+          </div>
+          <div id="answerArea" class="answer-area"><input id="answerInput" autocomplete="off" placeholder="Type your answer..." maxlength="30" /><button id="submitBtn" class="submit-btn">SUBMIT</button></div>
+          <div class="reaction-bar" id="reactionBar" aria-label="Quick reactions">
+            <button data-reaction="👏" title="Nice!">👏</button><button data-reaction="🔥" title="Great!">🔥</button><button data-reaction="😂" title="LOL">😂</button><button data-reaction="😱" title="Close!">😱</button><button data-reaction="😭" title="Nooo!">😭</button><button data-reaction="💀" title="You're in trouble!">💀</button><button data-reaction="👀" title="Pressure!">👀</button><button data-reaction="🎯" title="Perfect!">🎯</button><button data-reaction="⚡" title="So fast!">⚡</button><button data-reaction="🏆" title="Champion!">🏆</button>
+          </div>
+          <div id="reactionLayer" class="reaction-layer" aria-hidden="true"></div>
+        </div>
+        <aside class="side-panel feed-panel"><h3>LIVE GAME FEED</h3><div id="feed"></div></aside>
+      </div>
+      <div class="bottom-status"><div>👥 <b id="playerCount">0 / 8</b><span>PLAYERS</span></div><div id="streakBox">🔥 <b>0</b><span>STREAK</span></div><div id="roundWinBox">+1 <b>🏆</b><span>ROUND WIN</span></div></div>
+      <div id="gameSettingsOverlay" class="game-settings-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameSettingsTitle">
+        <section class="game-settings-panel">
+          <button id="closeGameSettings" class="game-settings-close" type="button" aria-label="Close settings">×</button>
+          <div class="eyebrow">GAME MENU</div><h2 id="gameSettingsTitle">Game settings</h2>
+          <p id="gameSettingsStatus" class="game-settings-status">Adjust audio, pause the match, or leave the game.</p>
+          <div class="game-settings-options">
+            <button id="settingsSoundBtn" type="button" class="game-settings-option"><span>Sound effects</span><strong>ON</strong></button>
+            <button id="settingsMusicBtn" type="button" class="game-settings-option"><span>Background music</span><strong>ON</strong></button>
+          </div>
+          <div class="game-settings-actions">
+            <button id="pauseGameBtn" type="button" class="primary">PAUSE GAME</button>
+            <button id="exitGameBtn" type="button" class="game-exit-btn">LEAVE GAME</button>
+          </div>
+          <small class="game-settings-footnote">Pausing affects everyone in this room and is controlled by the host.</small>
+        </section>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="screen results-screen">
+      <div class="results-card"><div class="eyebrow" id="resultsEyebrow">ROUND COMPLETE</div><div class="results-crown">🏆</div><h2 id="resultsTitle">Arjun wins the round!</h2><p id="resultsSub">+1 point</p><div class="transition-status" id="transitionStatus"></div><div id="scoreboard" class="scoreboard"></div><div class="result-actions"><button id="continueRoundBtn" class="primary big">CONTINUE →</button><button id="playAgainBtn" class="primary big">PLAY AGAIN</button><button id="newRoomBtn" class="secondary big">NEW ROOM</button></div><p id="resultsHint" class="muted"></p></div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="/netlify-client.js?v=20261013-game-menu-v1"></script><script src="/avatars.js?v=20261011-no-chairs-v3"></script><script type="module" src="/three-scene.js?v=20261011-no-chairs-v3"></script><script type="module" src="/app.js?v=20261013-game-menu-v1"></script>
+<audio id="bgMusic" src="/assets/beat-the-time-party-final.wav" loop preload="auto"></audio>
+</body>
+</html>
