@@ -21,7 +21,3 @@ Create a room and share its five-letter code, or join a friend’s room with the
 ## Technology
 
 JavaScript · Three.js · Netlify Functions · Netlify Blobs
-
-## Assets
-
-Artwork and game visuals were created for this project. The game does not include third-party character models or downloaded asset packs. See [ASSET_LICENSES.md](ASSET_LICENSES.md) for the asset note.
